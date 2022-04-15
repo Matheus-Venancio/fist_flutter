@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -32,12 +34,17 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  int _numeroAleatorio = 0;
+  List<String> _frases = ['Grandes guerreiros fazem grandes sacrificios para virar heroi',
+    'Perder para a razão, sempre é ganhar',
+    'O medo de perder tira a vontade de ganhar',
+    'Ser ou não ser, eis a questão',
+    'È melhor conquistar a si mesmo do que vencer mil batalhas'];//LIST DE FRASES
 
+  /**metoo pra somar os numeros**/
   void _incrementCounter() {
     setState(() {
-
-      _counter++;
+      _numeroAleatorio = new Random().nextInt(4);//Gera um numero aleatorio ate o valor 4
     });
   }
 
@@ -59,16 +66,18 @@ class _MyHomePageState extends State<MyHomePage> {
               'Precione o botão para gerar uma frase',
             ),
             Text(
-              '$_counter',
+              _frases[_numeroAleatorio],//Exibir as frases aleatoriamente.
               style: Theme.of(context).textTheme.headline4,
             ),
           ],
         ),
       ),
+
+      //È o botao
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed: _incrementCounter,//é quando algo é precionado, no caso nesse increment counter que esta o evento de soma
         tooltip: 'Increment',
-        child: const Icon(Icons.add),
+        child: const Icon(Icons.add),/**simbolo de adicionar**/
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
